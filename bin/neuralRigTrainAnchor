@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+diff_cmd="echo start training differential"
+anchor_cmd="echo start training anchor"
+
+for arg in "$@"
+do
+output_path=$(awk -F "=" '/output_path/ {print $2}' ${arg})
+anchor_dir=${output_path}"/anchor"
+anchor_log=${output_path}"/anchor/output.log"
+
+if [ ! -d ${anchor_dir} ];
+then
+    mkdir -p ${anchor_dir}
+fi
+
+anchor_cmd=${anchor_cmd}";neuralRigTrainUnit ${arg} --type anchor --cpu > ${anchor_log}"
+done
+
+anchor_cmd="("${anchor_cmd}") &"
+
+final_cmd=${anchor_cmd}
+
+echo ${final_cmd}
+eval ${final_cmd}
+
