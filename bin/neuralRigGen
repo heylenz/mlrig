@@ -1,0 +1,75 @@
+#!/bin/env python
+import sys
+from optparse import OptionParser
+import ml.neuralRig.prep.rigPoseGen as rpg
+
+USAGE = '''\
+Generates training examples for neural training
+'''
+
+
+def main():
+    parser = OptionParser(USAGE)
+    parser.add_option('--config',
+                      dest='config',
+                      action='store',
+                      default=None,
+                      type='string',
+                      help='path to .ini config file')
+    
+    parser.add_option('--num',
+                      dest='num',
+                      action='store',
+                      default=10000,
+                      type='int',
+                      help='number of poses')
+
+    parser.add_option('--batch_size',
+                      dest='batch_size',
+                      action='store',
+                      default=200,
+                      type='int',
+                      help='number of poses to be saved in a single file')
+
+    parser.add_option('--log',
+                      dest='log',
+                      action='store',
+                      default=None,
+                      type='string',
+                      help='log path')
+
+    parser.add_option('--data_path',
+                      dest='data_path',
+                      action='store',
+                      default=None,
+                      type='string',
+                      help='Optional. If given, use existing mover values in data path instead of random values')
+    
+    options, arguments = parser.parse_args()
+ 
+    if not arguments:
+        raise ValueError("Need a path given for export")
+
+    if len(arguments) > 1:
+        raise ValueError("More than one argument is given")
+
+    if not options.config:
+        raise ValueError("--config is required")
+
+    generator = rpg.RigPoseGenerator.from_config(options.config)
+    generator.batch_export_farm(arguments[0],
+                                options.num,
+                                data_format='pkl',
+                                batch_size=options.batch_size,
+                                data_path=options.data_path,
+                                log_dir=options.log)
+
+
+if __name__ == '__main__':
+    try:
+        result = main()
+    except SystemExit:
+        raise
+    except Exception as e:
+        sys.stderr.write("Error: %s\n" % sys.exc_info()[1])
+        exit(1)

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+local_cmd="echo start training local offset"
+
+for arg in "$@"
+do
+output_path=$(awk -F "=" '/output_path/ {print $2}' ${arg})
+local_dir=${output_path}"/local_offset"
+local_log=${output_path}"/local_offset/output.log"
+
+if [ ! -d ${local_dir} ];
+then
+    mkdir -p ${local_dir}
+fi
+
+local_cmd=${local_cmd}";neuralRigTrainUnit ${arg} --type local --cpu > ${local_log}"
+done
+
+local_cmd="("${local_cmd}") &"
+
+final_cmd=${local_cmd}
+
+echo ${final_cmd}
+eval ${final_cmd}
+
