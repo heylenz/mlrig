@@ -1,0 +1,52 @@
+#!/bin/env python
+import sys
+from optparse import OptionParser
+import ml.neuralRig.train.setup as setup
+
+USAGE = '''\
+train the neural network based on given config
+'''
+
+
+def main():
+    parser = OptionParser(USAGE)
+
+    parser.add_option('--type',
+                      dest='type',
+                      action='store',
+                      default='differential',
+                      type='string',
+                      help='training type')
+
+    parser.add_option('--tensor_board',
+                      dest='tensor_board',
+                      action='store_true',
+                      default=False,
+                      help='if true, generates log for tensor board')
+
+    parser.add_option('--cpu',
+                      dest='cpu',
+                      action='store_true',
+                      default=False,
+                      help='if true, use cpu for training')
+
+    options, arguments = parser.parse_args()
+
+    if not arguments:
+        raise ValueError("Need specify the path for the training config file")
+
+    if len(arguments) > 1:
+        raise ValueError("More than one config is given")
+
+    ts = setup.TrainingSession(arguments[0])
+    ts.train(training_type=options.type, cpu=options.cpu, log=options.tensor_board)
+
+
+if __name__ == '__main__':
+    try:
+        result = main()
+    except SystemExit:
+        raise
+    except Exception as e:
+        sys.stderr.write("Error: %s\n" % sys.exc_info()[1])
+        exit(1)
