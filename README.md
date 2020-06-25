@@ -1,6 +1,4 @@
 
-## Description
-
 This is the source repo for the SIGGRAPH2020 paper:
 
 **Accurate Face Rig Approximation With Deep Differential Subspace Reconstruction** (https://doi.org/10.1145/3386569.3392491)
