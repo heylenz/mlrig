@@ -17,7 +17,7 @@ To be suitable for film-quality animation, rigs for character deformation must f
 
 Please cite our paper if you use this code for your research: 
 ```
-@article{Song2020Face,
+@article{song2020accurate,
 author = {Song, Steven L. and Shi, Weiqi and Reed, Michael},
 title = {Accurate Face Rig Approximation with Deep Differential Subspace Reconstruction},
 year = {2020},
