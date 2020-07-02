@@ -6,7 +6,7 @@ This is the source repo for the SIGGRAPH2020 paper:
 Preprint available [here](https://arxiv.org/abs/2006.01746)
 
 <p float="left">
-<img src="Images/teaser_web.png" height="750px"/>
+<img src="images/teaser_web.png" height="750px"/>
 </p>
 
 ## Abstract
