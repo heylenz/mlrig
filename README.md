@@ -9,7 +9,7 @@ Authors:
 Steven L. Song\*, 
 Weiqi Shi\*, 
 Michael Reed 
-(* equal contributions)
+(* authors contributed equally)
 
 
 <p float="center">
