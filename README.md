@@ -67,7 +67,7 @@ Before we go into details, it's worth mentioning a technique we used for this pr
 Differential coordinates are fairly easy to calculate:
 
 <p float="center">
-<img src="images/use_differential_coord.png" height="100px">
+<img src="images/use_differential_coord.png" height="50px">
 </p>
 
 
