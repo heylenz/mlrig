@@ -1,15 +1,11 @@
 ## Description
 
 ### This is the open source repo for the SIGGRAPH2020 paper:
-**Accurate Face Rig Approximation With Deep Differential Subspace Reconstruction** (https://doi.org/10.1145/3386569.3392491)
+**Accurate Face Rig Approximation With Deep Differential Subspace Reconstruction**
 
-Preprint available [here](https://arxiv.org/abs/2006.01746)
+###### Preprint available [here](https://arxiv.org/abs/2006.01746). (https://doi.org/10.1145/3386569.3392491)
 
-Authors:
-Steven L. Song\*, 
-Weiqi Shi\*, 
-Michael Reed 
-(* authors contributed equally)
+###### Authors: Steven L. Song\*, Weiqi Shi\*, Michael Reed (* equal contribution)
 
 
 <p float="center">
